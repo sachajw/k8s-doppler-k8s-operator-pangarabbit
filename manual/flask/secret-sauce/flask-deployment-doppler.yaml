@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: doppler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: webapp
+        image: thevestedleopard/secret-sauce
+        imagePullPolicy: Always
+        env:
+        - name: SECRET_SAUCE
+          valueFrom:
+            secretKeyRef:
+              name: secret-sauce
+              key: SECRET_SAUCE
+        ports:
+          - containerPort: 5000

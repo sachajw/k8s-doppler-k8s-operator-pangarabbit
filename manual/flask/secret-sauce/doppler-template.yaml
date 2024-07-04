@@ -1,0 +1,27 @@
+projects:
+  - name: secret-sauce
+    description: Kubernetes demo app
+
+    environments:
+      - name: Development
+        slug: dev
+        configs:
+          - slug: dev
+
+      - name: Staging
+        slug: stg
+        configs:
+          - slug: stg
+
+      - name: Production
+        slug: prd
+        configs:
+          - slug: prd
+
+    secrets:
+      dev:
+        SECRET_SAUCE: tartar
+      stg:
+        SECRET_SAUCE: horseradish
+      prd:
+        SECRET_SAUCE: tzatziki
